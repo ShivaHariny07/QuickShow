@@ -40,11 +40,12 @@ export const AppProvider = ({ children })=>{
             const { data } = await axios.get('/api/show/all')
             if(data.success){
                 setShows(data.shows)
+                console.log("Fetched shows:", data.shows);
             }else{
                 toast.error(data.message)
             }
         } catch (error) {
-            console.error(error)
+            console.error("Error fetching shows:",error)
         }
     }
 
