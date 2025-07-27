@@ -3,6 +3,7 @@ import HeroSection from '../components/HeroSection'
 import FeaturedSection from '../components/FeaturedSection'
 import TrailersSection from '../components/TrailersSection'
 import MovieCard from '../components/MovieCard'
+import APITestComponent from '../components/APITestComponent'
 import { useAppContext } from '../context/AppContext'
 import { useNavigate } from 'react-router-dom'
 
@@ -12,6 +13,9 @@ const Home = () => {
 
   return (
     <>
+      {/* Temporary API Test Component - Remove after testing */}
+      <APITestComponent />
+      
       <HeroSection />
       <FeaturedSection />
       
