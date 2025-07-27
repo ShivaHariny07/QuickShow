@@ -14,11 +14,22 @@ const MovieCard = ({movie}) => {
         return null; // or return a placeholder/loading component
     }
 
+    // Handle both full URLs and relative paths for backdrop_path
+    const getImageSrc = (backdropPath) => {
+        if (!backdropPath) return '';
+        // If it's already a full URL (starts with http), use it as is
+        if (backdropPath.startsWith('http')) {
+            return backdropPath;
+        }
+        // Otherwise, prepend the image_base_url
+        return image_base_url + backdropPath;
+    }
+
   return (
     <div className='flex flex-col justify-between p-3 bg-gray-800 rounded-2xl hover:-translate-y-1 transition duration-300 w-66'>
 
       <img onClick={()=> {navigate(`/movies/${movie._id}`); scrollTo(0, 0)}}
-       src={image_base_url + (movie.backdrop_path || '')} alt="" className='rounded-lg h-52 w-full object-cover object-right-bottom cursor-pointer'/>
+       src={getImageSrc(movie.backdrop_path)} alt="" className='rounded-lg h-52 w-full object-cover object-right-bottom cursor-pointer'/>
 
        <p className='font-semibold mt-2 truncate'>{movie.title || 'Untitled'}</p>
 
